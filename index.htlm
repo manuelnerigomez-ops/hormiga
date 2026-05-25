@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Hormiga 3D en Realidad Aumentada</title>
+
+<!-- AFRAME -->
+<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+<!-- ARJS -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial;
+}
+
+#panel{
+
+    position:absolute;
+
+    top:10px;
+
+    left:10px;
+
+    background:white;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    width:320px;
+
+    z-index:999;
+
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="panel">
+
+<h2>Hormiga 3D</h2>
+
+<p>
+
+Modelo educativo en Realidad Aumentada
+
+</p>
+
+<p>
+
+Partes representadas:
+
+</p>
+
+<ul>
+
+<li>Cabeza</li>
+
+<li>Tórax</li>
+
+<li>Abdomen</li>
+
+<li>Antenas</li>
+
+<li>Patas</li>
+
+<li>Ojos</li>
+
+</ul>
+
+</div>
+
+<a-scene
+
+embedded
+
+vr-mode-ui="enabled:false"
+
+renderer="logarithmicDepthBuffer:true;"
+
+arjs="sourceType:webcam;
+      debugUIEnabled:false;">
+
+<!-- MARCADOR -->
+
+<a-marker preset="hiro">
+
+<!-- ===================================== -->
+<!-- CABEZA -->
+<!-- ===================================== -->
+
+<a-sphere
+
+position="0 1 0"
+
+radius="0.35"
+
+color="#3b2a1f">
+
+</a-sphere>
+
+<!-- OJOS -->
+
+<a-sphere
+
+position="-0.12 1.08 0.28"
+
+radius="0.04"
+
+color="black">
+
+</a-sphere>
+
+<a-sphere
+
+position="0.12 1.08 0.28"
+
+radius="0.04"
+
+color="black">
+
+</a-sphere>
+
+<!-- ===================================== -->
+<!-- TORAX -->
+<!-- ===================================== -->
+
+<a-sphere
+
+position="0 1 -0.7"
+
+radius="0.45"
+
+color="#4a3426">
+
+</a-sphere>
+
+<!-- ===================================== -->
+<!-- ABDOMEN -->
+<!-- ===================================== -->
+
+<a-sphere
+
+position="0 1 -1.6"
+
+radius="0.6"
+
+color="#5a3d2b">
+
+</a-sphere>
+
+<!-- ===================================== -->
+<!-- ANTENAS -->
+<!-- ===================================== -->
+
+<a-cylinder
+
+position="-0.18 1.35 0.2"
+
+radius="0.015"
+
+height="0.5"
+
+rotation="40 0 30"
+
+color="black">
+
+</a-cylinder>
+
+<a-cylinder
+
+position="0.18 1.35 0.2"
+
+radius="0.015"
+
+height="0.5"
+
+rotation="40 0 -30"
+
+color="black">
+
+</a-cylinder>
+
+<!-- ===================================== -->
+<!-- PATAS IZQUIERDAS -->
+<!-- ===================================== -->
+
+<a-cylinder
+
+position="-0.45 1 -0.6"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 60"
+
+color="black">
+
+</a-cylinder>
+
+<a-cylinder
+
+position="-0.45 1 -1"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 60"
+
+color="black">
+
+</a-cylinder>
+
+<a-cylinder
+
+position="-0.45 1 -1.4"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 60"
+
+color="black">
+
+</a-cylinder>
+
+<!-- ===================================== -->
+<!-- PATAS DERECHAS -->
+<!-- ===================================== -->
+
+<a-cylinder
+
+position="0.45 1 -0.6"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 -60"
+
+color="black">
+
+</a-cylinder>
+
+<a-cylinder
+
+position="0.45 1 -1"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 -60"
+
+color="black">
+
+</a-cylinder>
+
+<a-cylinder
+
+position="0.45 1 -1.4"
+
+radius="0.02"
+
+height="0.8"
+
+rotation="0 0 -60"
+
+color="black">
+
+</a-cylinder>
+
+<!-- ===================================== -->
+<!-- ETIQUETAS -->
+<!-- ===================================== -->
+
+<a-text
+
+value="Cabeza"
+
+position="0.6 1 0"
+
+color="black"
+
+scale="1.2 1.2 1.2">
+
+</a-text>
+
+<a-text
+
+value="Torax"
+
+position="0.8 1 -0.7"
+
+color="black"
+
+scale="1.2 1.2 1.2">
+
+</a-text>
+
+<a-text
+
+value="Abdomen"
+
+position="1 1 -1.6"
+
+color="black"
+
+scale="1.2 1.2 1.2">
+
+</a-text>
+
+<!-- ===================================== -->
+<!-- LUCES -->
+<!-- ===================================== -->
+
+<a-light
+
+type="ambient"
+
+intensity="0.8">
+
+</a-light>
+
+<a-light
+
+type="directional"
+
+position="2 4 2"
+
+intensity="1">
+
+</a-light>
+
+</a-marker>
+
+<!-- CAMARA -->
+
+<a-entity camera></a-entity>
+
+</a-scene>
+
+<script>
+
+// =====================================
+// ROTACION AUTOMATICA
+// =====================================
+
+const marker = document.querySelector("a-marker");
+
+let angulo = 0;
+
+function animar(){
+
+    angulo += 0.2;
+
+    marker.object3D.rotation.y = angulo * Math.PI/180;
+
+    requestAnimationFrame(animar);
+}
+
+animar();
+
+</script>
+
+</body>
+
+</html>
